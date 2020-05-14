@@ -21,6 +21,14 @@ router.get('/beers', requireToken, (req, res, next) => {
     .catch(next)
 })
 
+// SHOW - GET /beers/<id>
+router.get('/beers/:id', requireToken, (req, res, next) => {
+  Beer.findById(req.params.id)
+    .then(handle404)
+    .then(beer => res.status(200).json({ beer: beer.toObject() }))
+    .catch(next)
+})
+
 // CREATE - POST /beers
 router.post('/beers', requireToken, (req, res, next) => {
   req.body.beer.owner = req.user.id
