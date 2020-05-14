@@ -12,6 +12,7 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 // ************************************* //
 
+
 // INDEX - GET /beers
 router.get('/beers', requireToken, (req, res, next) => {
   Beer.find()
@@ -66,5 +67,6 @@ router.delete('/beers/:id', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
+
 
 module.exports = router
