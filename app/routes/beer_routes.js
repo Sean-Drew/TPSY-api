@@ -55,5 +55,16 @@ router.patch('/beers/:id', requireToken, removeBlanks, (req, res, next) => {
     .catch(next)
 })
 
+// DESTROY - DELETE /beers/<id>
+router.delete('/beers/:id', requireToken, (req, res, next) => {
+  Beer.findById(req.params.id)
+    .then(handle404)
+    .then(beer => {
+      requireOwnership(req, beer)
+      beer.deleteOne()
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
+})
 
 module.exports = router
