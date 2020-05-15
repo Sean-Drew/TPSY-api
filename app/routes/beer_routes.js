@@ -33,9 +33,9 @@ router.get('/beers/:id', requireToken, (req, res, next) => {
 
 // CREATE - POST /beers
 router.post('/beers', requireToken, (req, res, next) => {
-  req.body.beer.owner = req.user.id
+  req.body.owner = req.user.id
 
-  Beer.create(req.body.beer)
+  Beer.create(req.body)
     .then(beer => {
       res.status(201).json({ beer: beer.toObject() })
     })
