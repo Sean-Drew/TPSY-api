@@ -44,15 +44,21 @@ router.post('/beers', requireToken, (req, res, next) => {
 
 // UPDATE - PATCH /beers/<id>
 router.patch('/beers/:id', requireToken, removeBlanks, (req, res, next) => {
-  delete req.body.beer.owner
+  delete req.body.owner
 
   Beer.findById(req.params.id)
     .then(handle404)
     .then(beer => {
+      console.log('original beer', beer)
       requireOwnership(req, beer)
+      // console.log('req is', req)
+      console.log('Attempted change', req.body.beer)
       return beer.updateOne(req.body.beer)
     })
-    .then(() => res.sendStatus(204))
+    .then((beer) => {
+      console.log('updated beer is', beer)
+      return res.sendStatus(204)
+    })
     .catch(next)
 })
 
