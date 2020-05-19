@@ -95,5 +95,5 @@ While the present version of TPSY focuses on beer, it was **intentionally design
 
 ---
 
-#### Wireframe:
-![wireframe](https://lucidchart.zendesk.com/hc/article_attachments/360001080866/Facebook_Wireframe_-_New_Page.png)
+#### Wireframe & ERD:
+![wireframe](https://i.imgur.com/yUjfgQl.jpg)
