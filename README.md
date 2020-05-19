@@ -1,4 +1,4 @@
-<img src="public/TPSY Black on White.png">
+![TPSY logo](https://i.imgur.com/DibyJxu.png)
 
 ---
 
