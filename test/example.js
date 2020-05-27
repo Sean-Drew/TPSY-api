@@ -38,7 +38,7 @@ describe('Examples', () => {
         exampleId = record._id
         done()
       })
-      .catch(console.error)
+      // .catch(// console.error)
   })
 
   describe('GET /examples', () => {
@@ -78,7 +78,7 @@ describe('Examples', () => {
           exampleId = record._id
           done()
         })
-        .catch(console.error)
+        // .catch(// console.error)
     })
 
     it('must be owned by the user', done => {

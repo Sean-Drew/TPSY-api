@@ -12,7 +12,6 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 // ************************************* //
 
-
 // INDEX - GET /beers
 router.get('/beers', requireToken, (req, res, next) => {
   Beer.find()
@@ -49,14 +48,14 @@ router.patch('/beers/:id', requireToken, removeBlanks, (req, res, next) => {
   Beer.findById(req.params.id)
     .then(handle404)
     .then(beer => {
-      console.log('original beer', beer)
+      // console.log('original beer', beer)
       requireOwnership(req, beer)
       // console.log('req is', req)
-      console.log('Attempted change', req.body.beer)
+      // console.log('Attempted change', req.body.beer)
       return beer.updateOne(req.body.beer)
     })
     .then((beer) => {
-      console.log('updated beer is', beer)
+      // console.log('updated beer is', beer)
       return res.sendStatus(204)
     })
     .catch(next)
@@ -73,6 +72,5 @@ router.delete('/beers/:id', requireToken, (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next)
 })
-
 
 module.exports = router
